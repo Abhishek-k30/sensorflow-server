@@ -9,15 +9,14 @@ dotenv.config();
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // or specific origin
-  res.header('Access-Control-Allow-Methods', 'GET, POST');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, x-api-key');
-  next();
-});
 
+// CORS Configuration
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'], // update this list with your frontend URLs
+  origin: [
+    'http://localhost:3000', // Local dev for React or Next.js frontend
+    'https://your-frontend.vercel.app', // The actual deployed frontend URL (replace this)
+    'https://sensorflow-server.onrender.com', // Backend URL if needed to allow access from itself
+  ],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'x-api-key'],
 }));
@@ -35,7 +34,7 @@ app.use('/', viewRoutes);
 // connect to MongoDB and start the server
 const startServer = async () => {
   await connectToMongoDB();
-  app.listen(process.env.PORT || 5000, '0.0.0.0', () =>
+  app.listen(process.env.PORT || 5000, () =>
     console.log(`Server running on port ${process.env.PORT || 5000}`)
   );
 
