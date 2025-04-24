@@ -8,7 +8,21 @@ import connectToMongoDB from './db/connectToMongoDB.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+import cors from 'cors';
+
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'], // update this list with your frontend URLs
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'x-api-key'],
+}));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // or specific origin
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, x-api-key');
+  next();
+});
+
 
 
 app.set('view engine', 'ejs');
