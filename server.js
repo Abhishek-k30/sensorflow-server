@@ -8,9 +8,8 @@ import connectToMongoDB from './db/connectToMongoDB.js';
 dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000' // where your Next.js app runs
-}));
+app.use(cors());
+
 
 app.set('view engine', 'ejs');
 app.use(express.json());
