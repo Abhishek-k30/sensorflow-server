@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SensorFlow Dashboard</title>
+</head>
+<body>
+  <h1>Sensor Data Dashboard</h1>
+  <table border="1">
+    <tr>
+      <th>Sensor Name</th>
+      <th>Temperature (°C)</th>
+      <th>Humidity (%)</th>
+      <th>Time</th>
+    </tr>
+    <% data.forEach(entry => { %>
+      <tr>
+        <td><%= entry.sensorId.name %></td>
+        <td><%= entry.temperature %></td>
+        <td><%= entry.humidity %></td>
+        <td><%= new Date(entry.timestamp).toLocaleString() %></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
