@@ -5,7 +5,9 @@ const sensorDataSchema = new mongoose.Schema({
   temperature: { type: Number, default: 0 },
   humidity: { type: Number, default: 0 },
   moisture: { type: Number, default: 0 },
-  npk: { type: Number, default: 0 },           // ✅ Combined NPK value
+  n: { type: Number, default: 0 },           // Nitrogen value
+  p: { type: Number, default: 0 },           // Phosphorus value
+  k: { type: Number, default: 0 },           // Potassium value
   ph: { type: Number, default: 0 },
   timestamp: { type: Date, default: Date.now },
   date: { type: String, default: () => new Date().toISOString().split('T')[0] }, // YYYY-MM-DD
