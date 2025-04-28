@@ -14,7 +14,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000', // Local dev for React or Next.js frontend
-    'https://your-frontend.vercel.app', // The actual deployed frontend URL (replace this)
+    'https://sensorflow-client-sma.vercel.app/', // The actual deployed frontend URL (replace this)
     'https://sensorflow-server.onrender.com', // Backend URL if needed to allow access from itself
   ],
   methods: ['GET', 'POST'],
